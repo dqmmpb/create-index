@@ -2,11 +2,4 @@ coverage
 dist
 node_modules
 *.log
-.*
-!.babelrc
-!.editorconfig
-!.eslintignore
-!.eslintrc
-!.gitignore
-!.npmignore
-!.travis.yml
+.nyc_output
