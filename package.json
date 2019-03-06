@@ -14,12 +14,13 @@
   },
   "description": "Creates ES6 ./index.js file in target directories that imports and exports all sibling files and directories.",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
-    "babel-plugin-transform-es2015-parameters": "^6.24.1",
-    "babel-plugin-transform-export-extensions": "^6.22.0",
-    "babel-register": "^6.26.0",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-syntax-export-extensions": "^7.0.0-beta.32",
+    "@babel/plugin-transform-destructuring": "^7.3.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.2.0",
+    "@babel/plugin-transform-parameters": "^7.3.3",
+    "@babel/register": "^7.0.0",
     "chai": "^4.2.0",
     "cross-env": "^5.2.0",
     "eslint": "^5.15.1",
@@ -46,8 +47,8 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production babel --source-maps --copy-files ./src --out-dir ./dist",
     "create-index": "node ./dist/bin/create-index ./src/utilities",
-    "lint": "cross-env NODE_ENV=development eslint ./src ./tests",
-    "test": "npm run build && npm run lint && cross-env NODE_ENV=development mocha --compilers js:babel-register"
+    "lint": "cross-env NODE_ENV=development eslint ./src ./test",
+    "test": "npm run build && npm run lint && cross-env NODE_ENV=development mocha --require @babel/register"
   },
   "version": "1.1.0"
 }
