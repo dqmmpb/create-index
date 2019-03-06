@@ -33,8 +33,10 @@ describe('writeIndex()', () => {
     expect(indexCode).to.equal(codeExample(`
 // @create-index
 
-export { default as bar } from './bar';
-export { default as foo } from './foo.js';
+import * as bar from './bar';
+
+export { bar };
+export { default as foo } from './foo';
     `));
   });
 
@@ -51,7 +53,7 @@ export { default as foo } from './foo.js';
     expect(indexCode).to.equal(codeExample(`
 // @create-index {"ignore":["/bar.js$/"]}
 
-export { default as foo } from './foo.js';
+export { default as foo } from './foo';
     `));
   });
 });

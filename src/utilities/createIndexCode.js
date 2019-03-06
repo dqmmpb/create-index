@@ -11,15 +11,25 @@ const safeVariableName = (fileName) => {
 };
 
 const buildExportBlock = (files) => {
-  let importBlock;
+  const dirImports = [];
+  const dirExports = [];
+  const fileExports = [];
 
-  importBlock = _.map(files, (fileName) => {
-    return 'export { default as ' + safeVariableName(fileName) + ' } from \'./' + fileName + '\';';
+  files.forEach((fileName) => {
+    const safeName = safeVariableName(fileName);
+    if (safeName === fileName) {
+      dirImports.push(`import * as ${safeName} from './${safeName}';`);
+      dirExports.push(`export { ${safeName} };`);
+    } else {
+      fileExports.push(`export { default as ${safeName} } from './${safeName}';`);
+    }
   });
 
-  importBlock = importBlock.join('\n');
+  if (dirImports.length > 0) {
+    dirImports.push('');
+  }
 
-  return importBlock;
+  return dirImports.concat(dirExports).concat(fileExports).join('\n');
 };
 
 export default (filePaths, options = {}) => {
