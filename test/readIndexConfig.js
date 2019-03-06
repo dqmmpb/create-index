@@ -1,6 +1,6 @@
 import path from 'path';
 import {
-    expect
+  expect
 } from 'chai';
 import readIndexConfig from '../src/utilities/readIndexConfig';
 

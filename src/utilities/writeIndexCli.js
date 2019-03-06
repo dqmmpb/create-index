@@ -1,3 +1,4 @@
+/* eslint-disable import/max-dependencies */
 import fs from 'fs';
 import path from 'path';
 import _ from 'lodash';
@@ -64,12 +65,12 @@ export default (directoryPaths, options = {}) => {
     try {
       existingIndexCode = fs.readFileSync(indexFilePath, 'utf8');
 
-        /* eslint-disable no-empty */
+      /* eslint-disable no-empty */
     } catch (error) {
 
     }
 
-        /* eslint-enable no-empty */
+    /* eslint-enable no-empty */
 
     fs.writeFileSync(indexFilePath, indexCode);
 

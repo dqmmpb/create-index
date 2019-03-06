@@ -1,8 +1,9 @@
 #!/usr/bin/env node
+// eslint-disable filenames/match-regex
 
 import yargs from 'yargs';
 import {
-    writeIndexCli
+  writeIndexCli
 } from '../utilities';
 
 const argv = yargs

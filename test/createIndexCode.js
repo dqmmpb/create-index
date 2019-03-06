@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-syntax */
 
 import {
-    expect
+  expect
 } from 'chai';
 import createIndexCode from '../src/utilities/createIndexCode';
 import codeExample from './codeExample';

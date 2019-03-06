@@ -4,7 +4,8 @@ import glob from 'glob';
 import validateTargetDirectory from './validateTargetDirectory';
 
 export default (directoryPath, options = {}) => {
-  let fileName, targetDirectories;
+  let fileName;
+  let targetDirectories;
 
   fileName = options.fileName || 'index.js';
   fileName = './**/' + fileName;
