@@ -15,21 +15,24 @@ const buildExportBlock = (files) => {
   const dirExports = [];
   const fileExports = [];
 
+  const lineEnding = '';
+
   files.forEach((fileName) => {
     const safeName = safeVariableName(fileName);
     if (safeName === fileName) {
-      dirImports.push(`import * as ${safeName} from './${safeName}';`);
-      dirExports.push(`export { ${safeName} };`);
+      dirImports.push(`import * as ${safeName} from './${safeName}'${lineEnding}`);
+      dirExports.push(`export { ${safeName} }${lineEnding}`);
     } else {
-      fileExports.push(`export { default as ${safeName} } from './${safeName}';`);
+      fileExports.push(`export { default as ${safeName} } from './${safeName}'${lineEnding}`);
     }
   });
 
   if (dirImports.length > 0) {
     dirImports.push('');
   }
+  const block = dirImports.concat(dirExports).concat(fileExports).join('\n');
 
-  return dirImports.concat(dirExports).concat(fileExports).join('\n');
+  return block;
 };
 
 export default (filePaths, options = {}) => {
