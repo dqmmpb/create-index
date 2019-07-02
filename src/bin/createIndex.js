@@ -7,6 +7,7 @@ import {
 } from '../utilities';
 
 const argv = yargs
+  .pkgConf('indexer')
   .demand(1)
   .options({
     recursive: {
