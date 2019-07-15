@@ -1,5 +1,6 @@
 coverage
-dist
+#dist
 node_modules
 *.log
 .nyc_output
+package-lock.json
